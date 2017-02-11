@@ -64,8 +64,6 @@ function jumpoff_body_class($classes) {
 add_filter('body_class', 'jumpoff_body_class');
 
 
-
-
 /** 
  *  Admin Body Class
  *  Adds an admin body class that we can use to 

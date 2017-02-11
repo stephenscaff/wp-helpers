@@ -14,6 +14,7 @@ function jumpoff_img(){
   return $img_path;
 }
 
+
 /** 
  *  Get Assets Path
  *  An asset path helper that gets template path at /assets
@@ -25,6 +26,7 @@ function jumpoff_path(){
   $path = $template_path . '/assets';
   return $path;
 }
+
 
 /** 
  *  Get SVG Path

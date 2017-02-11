@@ -68,6 +68,7 @@ function jumpoff_post_cat($type){
   }
 } 
 
+
 /**
  *  Get a Post's Term
  *  Gets the term of a given post, within a provided taxonomy

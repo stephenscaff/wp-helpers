@@ -36,8 +36,9 @@ function jumpoff_get_posts($post_cat, $num_posts, $content_type){
   return $posts;
 }
 
+
 /**
- *  jumpoff_cpts()
+ *  jumpoff_get_cpts()
  *
  *  Get Posts by custom post type
  *
@@ -48,7 +49,7 @@ function jumpoff_get_posts($post_cat, $num_posts, $content_type){
  *  @return   $posts
  */ 
 
-function jumpoff_cpts($post_type, $num_posts, $content_type){
+function jumpoff_get_cpts($post_type, $num_posts, $content_type){
   global $post ; 
 
   $args = array(

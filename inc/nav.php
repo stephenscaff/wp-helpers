@@ -21,6 +21,7 @@ function jumpoff_page_url($page_name, $cpt=''){
   return $page_url;
 }
 
+
 /**
  *  Nav Active Class.
  *  Adds 'is-active' class, outside of the wp nav

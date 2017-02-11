@@ -19,6 +19,7 @@ function jumpoff_text_limit($string, $length, $replacer) {
   return $string;
 }
 
+
 /**
  *  jumpoff_excerpt
  *
@@ -30,12 +31,12 @@ function jumpoff_text_limit($string, $length, $replacer) {
  *  @example  jumpoff_excerpt(100);
  * 
  */ 
-
 function jumpoff_excerpt($characters, $rep='...') {
   $excerpt = get_the_excerpt('', '', false);
   $shortened_excerpt = jumpoff_text_limit($excerpt, $characters, $rep);
   echo $shortened_excerpt;
 }
+
 
 /**
  *  jumpoff_title
@@ -57,6 +58,7 @@ function jumpoff_title($characters, $rep='...') {
   // Return 
   return $shortened_title;
 }
+
 
 /**
  *  Insert html5 style Image and Captions
