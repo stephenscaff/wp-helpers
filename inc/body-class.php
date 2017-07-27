@@ -3,38 +3,38 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Bail if accessed directly
 
 /** 
- *  Body Class (front end)
- *  Cleans up body classes, then adds custom classes, based on page or cpt names
+ *  jumpoff_body_class
+ *  Cleans up body classes, then adds custom, based on page or cpt names
  *  @return: $classes (string)
  */
+
+add_filter('body_class', 'jumpoff_body_class');
+
 function jumpoff_body_class($classes) {
   global $post, $page;
 
-  // If a single post or page and is not Front Page
-  if (is_single() OR is_page() && !is_front_page()) {
-    $classes[] = basename(get_permalink());
+  // Get post type name
+  $post_type_name = get_post_type();
+
+  if (is_single() || is_page() && !is_front_page()) {
+    $classes[] = 'page-'.basename(get_permalink());
+  }
+  if (is_home() || is_singular('post') || is_post_type_archive( 'post' )) {
+    $classes[] = 'page-blog';
   }
 
-  // If blog index, post, or archive
-  if (is_home() OR is_singular('post') OR is_post_type_archive( 'post' )) {
-    $classes[] = 'blog';
-  }
-  // If a Woocommerce page
-  if (is_woocommerce() OR is_product() OR is_shop()) {
-    $classes[] = 'shop';
+  if (is_post_type_archive( )){
+    $classes[] = 'page-'.$post_type_name;
   }
 
-  // Example for CPTs
-  if (is_singular('portfolio') OR is_post_type_archive( 'portfolio' )) {
-    $classes[] = 'portfolio';
+  if ($page_theme) {
+    $classes[] = $page_theme;
   }
 
   // Remove Classes
   $home_id_class = 'page-id-' . get_option('page_on_front');
   $page_id_class = 'page-id-' . get_the_ID();
   $post_id_class = 'postid-' . get_the_ID();
-  $page_template_pagename = 'page-template-' . get_the_title();;
-  $page_template_templates = 'page-template-page-templates';
   $page_template_name_class = 'page-template-page-' . basename(get_permalink());
   $page_template_name_php = 'page-template-page-' . basename(get_permalink()) . '-php';
  
@@ -46,22 +46,20 @@ function jumpoff_body_class($classes) {
     $home_id_class,
     $page_id_class,
     $post_id_class,
-    $page_template_pagename,
-    $page_template_templates,
     $page_template_name_class,
     $page_template_name_php
   );
 
   // Add specific classes
-  // $classes[] = 'my-class';
+  //$classes[] = 'page-is-loaded';
 
-  // Compute array difference
+  // All together now
   $classes = array_diff($classes, $remove_classes);
-  
+
   return $classes;
 }
 
-add_filter('body_class', 'jumpoff_body_class');
+
 
 
 /** 
